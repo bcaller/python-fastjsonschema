@@ -39,20 +39,26 @@
 <span class="c1">#</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">This project was made to come up with fast JSON validations. Just let&#39;s see some numbers first:</span>
+<span class="sd">``fastjsonschema`` implements validation of JSON documents by JSON schema.</span>
+<span class="sd">The library implements JSON schema drafts 04, 06 and 07. The main purpose is</span>
+<span class="sd">to have a really fast implementation. See some numbers:</span>
 
 <span class="sd"> * Probably most popular ``jsonschema`` can take up to 5 seconds for valid inputs</span>
 <span class="sd">   and 1.2 seconds for invalid inputs.</span>
 <span class="sd"> * Second most popular ``json-spec`` is even worse with up to 7.2 and 1.7 seconds.</span>
-<span class="sd"> * Last ``validictory`` is much better with 370 or 23 milliseconds, but it does not</span>
-<span class="sd">   follow all standards and it can be still slow for some purposes.</span>
+<span class="sd"> * Last ``validictory``, now deprecated, is much better with 370 or 23 milliseconds,</span>
+<span class="sd">   but it does not follow all standards and it can be still slow for some purposes.</span>
 
-<span class="sd">That&#39;s why this project exists. It compiles definition into Python most stupid code</span>
-<span class="sd">which people would have hard time to write by themselves because of not-written-rule DRY</span>
-<span class="sd">(don&#39;t repeat yourself). When you compile definition, then times are 25 milliseconds for</span>
-<span class="sd">valid inputs and less than 2 milliseconds for invalid inputs. Pretty amazing, right? :-)</span>
+<span class="sd">With this library you can gain big improvements as ``fastjsonschema`` takes</span>
+<span class="sd">only about 25 milliseconds for valid inputs and 2 milliseconds for invalid ones.</span>
+<span class="sd">Pretty amazing, right? :-)</span>
 
-<span class="sd">You can try it for yourself with an included script:</span>
+<span class="sd">Technically it works by generating the most stupid code on the fly which is fast but</span>
+<span class="sd">is hard to write by hand. The best efficiency is achieved when compiled once and used</span>
+<span class="sd">many times, of course. It works similarly like regular expressions. But you can also</span>
+<span class="sd">generate the code to the file which is even slightly faster.</span>
+
+<span class="sd">You can do the performance on your computer or server with an included script:</span>
 
 <span class="sd">.. code-block:: bash</span>
 
@@ -72,7 +78,7 @@
 
 <span class="sd">This library follows and implements `JSON schema draft-04, draft-06, and draft-07</span>
 <span class="sd">&lt;http://json-schema.org&gt;`_. Sometimes it&#39;s not perfectly clear so I recommend also</span>
-<span class="sd">check out this `understanding json schema &lt;https://spacetelescope.github.io/understanding-json-schema&gt;`_.</span>
+<span class="sd">check out this `understanding JSON schema &lt;https://spacetelescope.github.io/understanding-json-schema&gt;`_.</span>
 
 <span class="sd">Note that there are some differences compared to JSON schema standard:</span>
 
@@ -82,8 +88,6 @@
 <span class="sd">   other languages.</span>
 <span class="sd"> * JSON schema says you can use keyword ``default`` for providing default values. This implementation</span>
 <span class="sd">   uses that and always returns transformed input data.</span>
-
-<span class="sd">Support only for Python 3.3 and higher.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">.draft04</span> <span class="k">import</span> <span class="n">CodeGeneratorDraft04</span>
